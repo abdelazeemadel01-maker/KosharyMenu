@@ -1,0 +1,1041 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#103d2e">
+  <meta name="description" content="منيو كشري العدوي الإلكتروني. تصفح الأصناف والأسعار وأرسل طلبك عبر واتساب.">
+
+  <title>كشري العدوي | المنيو الإلكتروني</title>
+
+  <style>
+    :root {
+      --green: #103d2e;
+      --green2: #18563e;
+      --gold: #d0aa45;
+      --cream: #fbf8ee;
+      --ink: #173b2e;
+      --muted: #64756b;
+      --white: #ffffff;
+      --border: #e6e2d5;
+      --danger: #a52b2b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 75px;
+    }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    /* رأس المنيو */
+
+    .site-header {
+      background: linear-gradient(125deg, #092d22, #16553c);
+      color: var(--white);
+      border-bottom: 4px solid var(--gold);
+      padding: 26px 16px;
+      text-align: center;
+    }
+
+    .brand {
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 900;
+      color: #f6d878;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .site-header p {
+      margin: 6px 0 0;
+    }
+
+    .header-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+      padding: 10px 16px;
+      min-height: 44px;
+      border: 1px solid #72d69a;
+      border-radius: 999px;
+      background: #087b43;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .header-whatsapp:hover {
+      background: #066536;
+    }
+
+    .wa-symbol {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      font-size: 13px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    /* شريط التنقل */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #fffdf6;
+      border-bottom: 1px solid #e6d8b2;
+      padding: 9px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scrollbar-width: thin;
+      justify-content: flex-start;
+    }
+
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+      min-height: 42px;
+      text-decoration: none;
+      background: var(--green);
+      color: var(--white);
+      border-radius: 22px;
+      padding: 8px 14px;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      background: var(--green2);
+    }
+
+    /* التخطيط الرئيسي */
+
+    .layout {
+      width: 100%;
+      max-width: 1400px;
+      margin: 22px auto;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 310px;
+      gap: 22px;
+      align-items: start;
+    }
+
+    main {
+      min-width: 0;
+    }
+
+    .menu-section {
+      margin: 0 0 32px;
+      scroll-margin-top: 76px;
+    }
+
+    .menu-section h2 {
+      text-align: center;
+      color: var(--green);
+      font-size: 25px;
+      margin: 0 0 16px;
+      padding: 0 0 9px;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    /* بطاقات الأصناف */
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .item {
+      min-width: 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-bottom: 3px solid var(--gold);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px #153e2b10;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    @media (hover: hover) {
+      .item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 22px #153e2b20;
+      }
+    }
+
+    .item-photo {
+      width: 100%;
+      height: 175px;
+      object-fit: cover;
+      display: block;
+      background: #e8eee7;
+    }
+
+    .item-info {
+      padding: 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      min-width: 0;
+    }
+
+    .item h3 {
+      margin: 0 0 7px;
+      font-size: 17px;
+      min-height: 3.2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.6;
+    }
+
+    .price {
+      color: #a67c1f;
+      font-size: 19px;
+      font-weight: bold;
+      margin: 7px 0 10px;
+    }
+
+    /* الأزرار */
+
+    .add-btn,
+    .clear-btn,
+    .checkout-btn {
+      width: 100%;
+      min-height: 44px;
+      border: 0;
+      border-radius: 9px;
+      padding: 10px;
+      background: var(--green);
+      color: var(--white);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .add-btn:hover,
+    .checkout-btn:hover {
+      background: var(--green2);
+    }
+
+    .add-btn:focus-visible,
+    .clear-btn:focus-visible,
+    .checkout-btn:focus-visible,
+    .qty-btn:focus-visible,
+    .remove-btn:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    /* سلة الطلبات */
+
+    .cart {
+      min-width: 0;
+      background: var(--white);
+      border: 1px solid #d9c37e;
+      border-radius: 16px;
+      overflow: hidden;
+      position: sticky;
+      top: 68px;
+      box-shadow: 0 8px 25px #153e2b12;
+    }
+
+    .cart h2 {
+      margin: 0;
+      padding: 15px;
+      background: var(--green);
+      color: #f7dc83;
+      text-align: center;
+      font-size: 22px;
+    }
+
+    .cart-body {
+      padding: 14px;
+    }
+
+    .empty {
+      color: var(--muted);
+      text-align: center;
+      padding: 15px 5px;
+    }
+
+    .cart-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 9px;
+      padding: 12px 0;
+      border-bottom: 1px solid #e9e6dd;
+      min-width: 0;
+    }
+
+    .cart-info {
+      flex: 1 1 120px;
+      min-width: 0;
+    }
+
+    .cart-row strong {
+      display: block;
+      line-height: 1.6;
+    }
+
+    .cart-row small {
+      display: block;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .cart-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .qty-btn,
+    .remove-btn {
+      min-width: 38px;
+      min-height: 38px;
+      border: 1px solid #d6ddcf;
+      border-radius: 7px;
+      background: #f7f7f0;
+      padding: 5px 9px;
+      color: var(--green);
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .qty-btn:hover {
+      background: #e8efe5;
+    }
+
+    .remove-btn {
+      color: var(--danger);
+      font-size: 13px;
+      font-weight: normal;
+    }
+
+    .remove-btn:hover {
+      background: #fff0f0;
+    }
+
+    .total {
+      border-top: 2px solid var(--gold);
+      margin-top: 14px;
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+      font-size: 19px;
+    }
+
+    .total span:last-child {
+      white-space: nowrap;
+    }
+
+    .clear-btn {
+      margin-top: 12px;
+      background: #eee9dc;
+      color: var(--green);
+      border: 1px solid #d8caa4;
+    }
+
+    .clear-btn:hover {
+      background: #e4dcc8;
+    }
+
+    .checkout-btn {
+      margin-top: 10px;
+    }
+
+    .cart-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 12px 0 0;
+    }
+
+    /* تذييل الصفحة */
+
+    .footer {
+      text-align: center;
+      padding: 22px 16px;
+      padding-bottom: 34px;
+      background: #092d22;
+      color: var(--white);
+      border-top: 4px solid var(--gold);
+    }
+
+    /* زر واتساب العائم */
+
+    .floating-whatsapp {
+      position: fixed;
+      left: 14px;
+      bottom: 14px;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 8px 13px;
+      background: #087b43;
+      color: var(--white);
+      border: 2px solid var(--white);
+      border-radius: 999px;
+      box-shadow: 0 5px 18px #0003;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .floating-whatsapp .wa-symbol {
+      width: 26px;
+      height: 26px;
+      font-size: 15px;
+    }
+
+    .floating-whatsapp:hover {
+      background: #066536;
+    }
+
+    /* الأجهزة اللوحية والشاشات المتوسطة */
+
+    @media (max-width: 1000px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+      }
+
+      /*
+        العنصر الأول في الصفحة هو المنيو،
+        والعنصر الثاني هو السلة.
+        لذلك تظهر السلة بعد المنيو تلقائيًا.
+      */
+
+      .cart {
+        position: static;
+        width: 100%;
+        grid-row: auto;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    /* الموبايل */
+
+    @media (max-width: 650px) {
+      .site-header {
+        padding: 20px 12px;
+      }
+
+      .site-header p {
+        font-size: 14px;
+      }
+
+      .header-whatsapp {
+        font-size: 14px;
+        padding: 9px 12px;
+      }
+
+      .nav {
+        padding: 8px;
+        gap: 7px;
+      }
+
+      .nav a {
+        font-size: 13px;
+        padding: 8px 12px;
+        min-height: 42px;
+      }
+
+      .layout {
+        padding: 0 10px;
+        margin: 15px auto;
+        gap: 22px;
+      }
+
+      .menu-section {
+        margin-bottom: 27px;
+      }
+
+      .menu-section h2 {
+        font-size: 22px;
+        margin-bottom: 13px;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .item {
+        border-radius: 12px;
+      }
+
+      .item-photo {
+        height: 135px;
+      }
+
+      .item-info {
+        padding: 9px;
+      }
+
+      .item h3 {
+        font-size: 15px;
+        min-height: 3.2em;
+        line-height: 1.55;
+      }
+
+      .price {
+        font-size: 17px;
+        margin: 6px 0 9px;
+      }
+
+      .add-btn {
+        font-size: 13px;
+        padding: 9px 5px;
+        min-height: 44px;
+      }
+
+      .cart h2 {
+        font-size: 20px;
+        padding: 13px;
+      }
+
+      .cart-body {
+        padding: 12px;
+      }
+
+      .cart-row {
+        gap: 8px;
+      }
+
+      .cart-info {
+        flex-basis: 100%;
+      }
+
+      .cart-actions {
+        width: 100%;
+      }
+
+      .qty-btn,
+      .remove-btn {
+        min-height: 42px;
+        min-width: 42px;
+      }
+
+      .remove-btn {
+        padding: 7px 12px;
+      }
+
+      .total {
+        font-size: 18px;
+      }
+
+      .floating-whatsapp {
+        left: 9px;
+        bottom: 9px;
+        min-height: 43px;
+        padding: 7px 10px;
+        font-size: 12px;
+        gap: 6px;
+      }
+
+      .floating-whatsapp .wa-symbol {
+        width: 23px;
+        height: 23px;
+      }
+
+      .footer {
+        padding-bottom: 72px;
+      }
+    }
+
+    /* الموبايلات الضيقة جدًا */
+
+    @media (max-width: 370px) {
+      .menu-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 13px;
+      }
+
+      .item-photo {
+        height: 190px;
+      }
+
+      .item-info {
+        padding: 12px;
+      }
+
+      .item h3 {
+        font-size: 17px;
+        min-height: auto;
+      }
+
+      .price {
+        font-size: 19px;
+      }
+
+      .add-btn {
+        font-size: 15px;
+      }
+
+      .floating-whatsapp {
+        font-size: 12px;
+      }
+    }
+
+    /* تقليل الحركة لمن يفضل ذلك */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- رأس المنيو -->
+
+  <header class="site-header">
+    <h1 class="brand">🍲 كشري العدوي</h1>
+    <p>الطعم المصري الأصيل — منيو إلكتروني تجريبي</p>
+
+    <a
+      class="header-whatsapp"
+      href="https://wa.me/201060072357"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="تواصل مع كشري العدوي عبر واتساب"
+    >
+      <span class="wa-symbol" aria-hidden="true">◉</span>
+      واتساب الطلبات: 01060072357
+    </a>
+  </header>
+
+  <!-- شريط أقسام المنيو -->
+
+  <nav class="nav" aria-label="أقسام المنيو">
+    <a href="#section-1">الكشري</a>
+    <a href="#section-2">الطواجن</a>
+    <a href="#section-3">بيتزا حواوشي</a>
+    <a href="#section-4">كريب العدوي</a>
+    <a href="#section-5">حواوشي إسكندراني</a>
+    <a href="#section-6">الحلو</a>
+    <a href="#section-7">الإضافات</a>
+    <a href="#section-8">المشروبات</a>
+    <a href="#cart">🛒 سلة الطلبات</a>
+  </nav>
+
+  <!-- محتوى الصفحة -->
+
+  <div class="layout">
+
+    <main>
+      <!-- أقسام الأصناف تُنشأ تلقائيًا من menu-data.js -->
+      <div id="menu-container"></div>
+    </main>
+
+    <!-- السلة تظهر بعد المنيو على الشاشات الصغيرة -->
+
+    <aside class="cart" id="cart">
+      <h2>🛒 سلة الطلبات</h2>
+
+      <div class="cart-body">
+
+        <div id="cart-items" class="empty" aria-live="polite">
+          السلة فارغة حاليًا. اختار الأصناف اللي تحبها.
+        </div>
+
+        <div class="total">
+          <span>الإجمالي</span>
+          <span><b id="cart-total">0</b> جنيه</span>
+        </div>
+
+        <button id="clear-cart" class="clear-btn" type="button">
+          إفراغ السلة
+        </button>
+
+        <button id="checkout" class="checkout-btn" type="button">
+          متابعة الطلب عبر واتساب
+        </button>
+
+        <p class="cart-note">
+          الصور الحالية مؤقتة للتجربة ويمكن استبدالها من مجلد images.
+        </p>
+
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- نهاية الصفحة -->
+
+  <footer class="footer">
+    كشري العدوي — الطعم المصري الأصيل ❤️
+  </footer>
+
+  <!-- زر واتساب العائم -->
+
+  <a
+    class="floating-whatsapp"
+    href="https://wa.me/201060072357"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="افتح واتساب كشري العدوي"
+  >
+    <span class="wa-symbol" aria-hidden="true">◉</span>
+    <span>واتساب 01060072357</span>
+  </a>
+
+  <!-- مهم: ملف البيانات يأتي قبل كود المنيو والسلة -->
+
+  <script src="menu-data.js"></script>
+
+  <script>
+    // سلة الطلبات
+    const cart = [];
+
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+
+    // عرض السلة وحساب الإجمالي
+    function renderCart() {
+      if (!cart.length) {
+        cartItems.className = 'empty';
+        cartItems.textContent =
+          'السلة فارغة حاليًا. اختار الأصناف اللي تحبها.';
+
+        cartTotal.textContent = '0';
+        return;
+      }
+
+      cartItems.className = '';
+      cartItems.replaceChildren();
+
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const row = document.createElement('div');
+        row.className = 'cart-row';
+
+        const info = document.createElement('div');
+        info.className = 'cart-info';
+
+        const title = document.createElement('strong');
+        title.textContent = item.name;
+
+        const sub = document.createElement('small');
+        sub.textContent =
+          item.price + ' جنيه × ' + item.quantity +
+          ' = ' + (item.price * item.quantity) + ' جنيه';
+
+        info.append(title, sub);
+
+        const actions = document.createElement('div');
+        actions.className = 'cart-actions';
+
+        // زر تقليل الكمية
+        const minus = document.createElement('button');
+        minus.className = 'qty-btn';
+        minus.textContent = '−';
+        minus.type = 'button';
+        minus.setAttribute('aria-label', 'تقليل كمية ' + item.name);
+
+        minus.onclick = () => {
+          item.quantity--;
+
+          if (item.quantity <= 0) {
+            cart.splice(index, 1);
+          }
+
+          renderCart();
+        };
+
+        // العدد الحالي
+        const qty = document.createElement('span');
+        qty.textContent = item.quantity;
+        qty.setAttribute('aria-label', 'الكمية');
+
+        // زر زيادة الكمية
+        const plus = document.createElement('button');
+        plus.className = 'qty-btn';
+        plus.textContent = '+';
+        plus.type = 'button';
+        plus.setAttribute('aria-label', 'زيادة كمية ' + item.name);
+
+        plus.onclick = () => {
+          item.quantity++;
+          renderCart();
+        };
+
+        // زر حذف الصنف
+        const remove = document.createElement('button');
+        remove.className = 'remove-btn';
+        remove.textContent = 'حذف';
+        remove.type = 'button';
+        remove.setAttribute('aria-label', 'حذف ' + item.name);
+
+        remove.onclick = () => {
+          cart.splice(index, 1);
+          renderCart();
+        };
+
+        actions.append(minus, qty, plus, remove);
+        row.append(info, actions);
+        cartItems.append(row);
+
+        total += item.price * item.quantity;
+      });
+
+      cartTotal.textContent = total;
+    }
+
+    // إنشاء أقسام المنيو وبطاقات الأصناف
+    function renderMenu() {
+      const container = document.getElementById('menu-container');
+      container.replaceChildren();
+
+      if (typeof menuData === 'undefined' || !Array.isArray(menuData)) {
+        container.textContent =
+          'تعذر تحميل بيانات المنيو. تأكد من وجود ملف menu-data.js.';
+        return;
+      }
+
+      menuData.forEach(sectionData => {
+        const section = document.createElement('section');
+        section.className = 'menu-section';
+        section.id = sectionData.id;
+
+        const heading = document.createElement('h2');
+        heading.textContent = sectionData.category;
+
+        const grid = document.createElement('div');
+        grid.className = 'menu-grid';
+
+        sectionData.items.forEach(itemData => {
+          const article = document.createElement('article');
+          article.className = 'item';
+
+          const photo = document.createElement('img');
+          photo.className = 'item-photo';
+          photo.src = itemData.image;
+          photo.alt = itemData.name;
+          photo.loading = 'lazy';
+          photo.decoding = 'async';
+
+          const info = document.createElement('div');
+          info.className = 'item-info';
+
+          const name = document.createElement('h3');
+          name.textContent = itemData.name;
+
+          const price = document.createElement('div');
+          price.className = 'price';
+          price.textContent = itemData.price + ' جنيه';
+
+          const button = document.createElement('button');
+          button.className = 'add-btn';
+          button.type = 'button';
+          button.dataset.name = itemData.name;
+          button.dataset.price = String(itemData.price);
+          button.textContent = 'أضف إلى السلة';
+          button.setAttribute(
+            'aria-label',
+            'أضف ' + itemData.name + ' إلى السلة'
+          );
+
+          info.append(name, price, button);
+          article.append(photo, info);
+          grid.append(article);
+        });
+
+        section.append(heading, grid);
+        container.append(section);
+      });
+
+      // ربط أزرار الإضافة بعد إنشاء جميع البطاقات
+      container.querySelectorAll('.add-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const name = button.dataset.name;
+          const price = Number(button.dataset.price);
+
+          const existing = cart.find(item => item.name === name);
+
+          if (existing) {
+            existing.quantity++;
+          } else {
+            cart.push({
+              name: name,
+              price: price,
+              quantity: 1
+            });
+          }
+
+          renderCart();
+        });
+      });
+    }
+
+    // إفراغ السلة
+    document.getElementById('clear-cart').addEventListener('click', () => {
+      if (!cart.length) {
+        return;
+      }
+
+      const confirmed = confirm('هل تريد إفراغ سلة الطلبات؟');
+
+      if (!confirmed) {
+        return;
+      }
+
+      cart.length = 0;
+      renderCart();
+    });
+
+    // متابعة الطلب عبر واتساب
+    document.getElementById('checkout').addEventListener('click', () => {
+      if (!cart.length) {
+        alert('السلة فارغة. أضف صنفًا أولًا.');
+        return;
+      }
+
+      const customerName = prompt('من فضلك اكتب اسمك:');
+
+      if (customerName === null) {
+        return;
+      }
+
+      if (!customerName.trim()) {
+        alert('اكتب اسمك من فضلك.');
+        return;
+      }
+
+      const orderType = prompt(
+        'اكتب طريقة الاستلام: توصيل أو استلام من المطعم',
+        'توصيل'
+      );
+
+      if (orderType === null) {
+        return;
+      }
+
+      const normalizedOrderType = orderType.trim();
+
+      if (!normalizedOrderType) {
+        alert('اكتب طريقة الاستلام من فضلك.');
+        return;
+      }
+
+      const isDelivery = normalizedOrderType.includes('توصيل');
+      let address = '';
+
+      if (isDelivery) {
+        const customerAddress = prompt(
+          'اكتب عنوان التوصيل بالتفصيل:'
+        );
+
+        if (customerAddress === null) {
+          return;
+        }
+
+        if (!customerAddress.trim()) {
+          alert('اكتب عنوان التوصيل من فضلك.');
+          return;
+        }
+
+        address = customerAddress.trim();
+      }
+
+      const lines = cart.map(item =>
+        '• ' + item.name + ' × ' + item.quantity +
+        ' = ' + (item.price * item.quantity) + ' جنيه'
+      );
+
+      const message = [
+        'السلام عليكم، أريد طلب أوردر من كشري العدوي 🍲',
+        '',
+        'اسم العميل: ' + customerName.trim(),
+        'طريقة الاستلام: ' + normalizedOrderType,
+        ...(address ? ['العنوان: ' + address] : []),
+        '',
+        'تفاصيل الطلب:',
+        ...lines,
+        '',
+        'الإجمالي: ' + cartTotal.textContent + ' جنيه',
+        '',
+        'برجاء تأكيد الطلب ووقت التجهيز. شكرًا لكم.'
+      ].join('\n');
+
+      const whatsappUrl =
+        'https://wa.me/201060072357?text=' +
+        encodeURIComponent(message);
+
+      window.location.href = whatsappUrl;
+    });
+
+    // تشغيل المنيو عند فتح الصفحة
+    renderMenu();
+    renderCart();
+  </script>
+
+</body>
+</html>
