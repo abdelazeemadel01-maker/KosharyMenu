@@ -4,10 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <meta name="theme-color" content="#103d2e">
   <meta name="description" content="منيو كشري العدوي الإلكتروني. تصفح الأصناف والأسعار وأرسل طلبك عبر واتساب.">
-
   <title>كشري العدوي | المنيو الإلكتروني</title>
 
   <style>
@@ -41,8 +39,7 @@
       overflow-wrap: anywhere;
     }
 
-    button,
-    a {
+    button, a {
       -webkit-tap-highlight-color: transparent;
     }
 
@@ -55,8 +52,6 @@
     img {
       max-width: 100%;
     }
-
-    /* رأس المنيو */
 
     .site-header {
       background: linear-gradient(125deg, #092d22, #16553c);
@@ -98,6 +93,29 @@
       background: #066536;
     }
 
+    .language-switch {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+      direction: ltr;
+    }
+
+    .language-switch button {
+      min-height: 40px;
+      padding: 8px 16px;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--white);
+      font-weight: bold;
+    }
+
+    .language-switch button.active {
+      background: var(--gold);
+      color: #092d22;
+    }
+
     .wa-symbol {
       display: inline-flex;
       align-items: center;
@@ -110,8 +128,6 @@
       line-height: 1;
       flex-shrink: 0;
     }
-
-    /* شريط التنقل */
 
     .nav {
       position: sticky;
@@ -150,8 +166,6 @@
       background: var(--green2);
     }
 
-    /* التخطيط الرئيسي */
-
     .layout {
       width: 100%;
       max-width: 1400px;
@@ -180,8 +194,6 @@
       padding: 0 0 9px;
       border-bottom: 2px solid var(--gold);
     }
-
-    /* بطاقات الأصناف */
 
     .menu-grid {
       display: grid;
@@ -241,8 +253,6 @@
       margin: 7px 0 10px;
     }
 
-    /* الأزرار */
-
     .add-btn,
     .clear-btn,
     .checkout-btn {
@@ -270,8 +280,6 @@
       outline: 3px solid var(--gold);
       outline-offset: 2px;
     }
-
-    /* سلة الطلبات */
 
     .cart {
       min-width: 0;
@@ -402,18 +410,13 @@
       margin: 12px 0 0;
     }
 
-    /* تذييل الصفحة */
-
     .footer {
       text-align: center;
-      padding: 22px 16px;
-      padding-bottom: 34px;
+      padding: 22px 16px 34px;
       background: #092d22;
       color: var(--white);
       border-top: 4px solid var(--gold);
     }
-
-    /* زر واتساب العائم */
 
     .floating-whatsapp {
       position: fixed;
@@ -446,19 +449,11 @@
       background: #066536;
     }
 
-    /* الأجهزة اللوحية والشاشات المتوسطة */
-
     @media (max-width: 1000px) {
       .layout {
         grid-template-columns: minmax(0, 1fr);
         gap: 24px;
       }
-
-      /*
-        العنصر الأول في الصفحة هو المنيو،
-        والعنصر الثاني هو السلة.
-        لذلك تظهر السلة بعد المنيو تلقائيًا.
-      */
 
       .cart {
         position: static;
@@ -470,8 +465,6 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
-
-    /* الموبايل */
 
     @media (max-width: 650px) {
       .site-header {
@@ -601,8 +594,6 @@
       }
     }
 
-    /* الموبايلات الضيقة جدًا */
-
     @media (max-width: 370px) {
       .menu-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -635,8 +626,6 @@
       }
     }
 
-    /* تقليل الحركة لمن يفضل ذلك */
-
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -652,12 +641,17 @@
 </head>
 
 <body>
-
-  <!-- رأس المنيو -->
-
   <header class="site-header">
-    <h1 class="brand">🍲 كشري العدوي</h1>
-    <p>الطعم المصري الأصيل — منيو إلكتروني تجريبي</p>
+    <h1 class="brand" id="brand-title">🍲 كشري العدوي</h1>
+
+    <p id="header-description">
+      الطعم المصري الأصيل — منيو إلكتروني
+    </p>
+
+    <div class="language-switch" aria-label="اختيار لغة المنيو">
+      <button type="button" id="lang-ar" lang="ar">العربية</button>
+      <button type="button" id="lang-en" lang="en">English</button>
+    </div>
 
     <a
       class="header-whatsapp"
@@ -667,11 +661,9 @@
       aria-label="تواصل مع كشري العدوي عبر واتساب"
     >
       <span class="wa-symbol" aria-hidden="true">◉</span>
-      واتساب الطلبات: 01060072357
+      <span id="header-whatsapp-text">واتساب الطلبات: 01060072357</span>
     </a>
   </header>
-
-  <!-- شريط أقسام المنيو -->
 
   <nav class="nav" aria-label="أقسام المنيو">
     <a href="#section-1">الكشري</a>
@@ -685,29 +677,22 @@
     <a href="#cart">🛒 سلة الطلبات</a>
   </nav>
 
-  <!-- محتوى الصفحة -->
-
   <div class="layout">
-
     <main>
-      <!-- أقسام الأصناف تُنشأ تلقائيًا من menu-data.js -->
       <div id="menu-container"></div>
     </main>
 
-    <!-- السلة تظهر بعد المنيو على الشاشات الصغيرة -->
-
     <aside class="cart" id="cart">
-      <h2>🛒 سلة الطلبات</h2>
+      <h2 id="cart-heading">🛒 سلة الطلبات</h2>
 
       <div class="cart-body">
-
         <div id="cart-items" class="empty" aria-live="polite">
           السلة فارغة حاليًا. اختار الأصناف اللي تحبها.
         </div>
 
         <div class="total">
-          <span>الإجمالي</span>
-          <span><b id="cart-total">0</b> جنيه</span>
+          <span id="total-label">الإجمالي</span>
+          <span><b id="cart-total">0</b> <span id="currency-label">جنيه</span></span>
         </div>
 
         <button id="clear-cart" class="clear-btn" type="button">
@@ -718,22 +703,16 @@
           متابعة الطلب عبر واتساب
         </button>
 
-        <p class="cart-note">
+        <p class="cart-note" id="cart-note">
           الصور الحالية مؤقتة للتجربة ويمكن استبدالها من مجلد images.
         </p>
-
       </div>
     </aside>
-
   </div>
 
-  <!-- نهاية الصفحة -->
-
-  <footer class="footer">
+  <footer class="footer" id="footer">
     كشري العدوي — الطعم المصري الأصيل ❤️
   </footer>
-
-  <!-- زر واتساب العائم -->
 
   <a
     class="floating-whatsapp"
@@ -741,29 +720,253 @@
     target="_blank"
     rel="noopener noreferrer"
     aria-label="افتح واتساب كشري العدوي"
+    id="floating-whatsapp"
   >
     <span class="wa-symbol" aria-hidden="true">◉</span>
-    <span>واتساب 01060072357</span>
+    <span id="floating-whatsapp-text">واتساب 01060072357</span>
   </a>
-
-  <!-- مهم: ملف البيانات يأتي قبل كود المنيو والسلة -->
 
   <script src="menu-data.js"></script>
 
   <script>
-    // سلة الطلبات
+    let currentLanguage = 'ar';
     const cart = [];
 
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
+    const menuContainer = document.getElementById('menu-container');
 
-    // عرض السلة وحساب الإجمالي
+    const text = {
+      ar: {
+        title: '🍲 كشري العدوي',
+        description: 'الطعم المصري الأصيل — منيو إلكتروني',
+        whatsappOrders: 'واتساب الطلبات: 01060072357',
+        nav: ['الكشري', 'الطواجن', 'بيتزا حواوشي', 'كريب العدوي', 'حواوشي إسكندراني', 'الحلو', 'الإضافات', 'المشروبات', '🛒 سلة الطلبات'],
+        cartTitle: '🛒 سلة الطلبات',
+        emptyCart: 'السلة فارغة حاليًا. اختار الأصناف اللي تحبها.',
+        currency: 'جنيه',
+        add: 'أضف إلى السلة',
+        total: 'الإجمالي',
+        clear: 'إفراغ السلة',
+        checkout: 'متابعة الطلب عبر واتساب',
+        note: 'الصور الحالية مؤقتة للتجربة ويمكن استبدالها من مجلد images.',
+        footer: 'كشري العدوي — الطعم المصري الأصيل ❤️',
+        floatingWhatsApp: 'واتساب 01060072357',
+        remove: 'حذف',
+        decrease: 'تقليل كمية',
+        increase: 'زيادة كمية',
+        quantity: 'الكمية',
+        loadError: 'تعذر تحميل بيانات المنيو. تأكد من وجود ملف menu-data.js.',
+        clearConfirm: 'هل تريد إفراغ سلة الطلبات؟',
+        emptyAlert: 'السلة فارغة. أضف صنفًا أولًا.',
+        namePrompt: 'من فضلك اكتب اسمك:',
+        nameRequired: 'اكتب اسمك من فضلك.',
+        typePrompt: 'اكتب طريقة الاستلام: توصيل أو استلام من المطعم',
+        typeRequired: 'اكتب طريقة الاستلام من فضلك.',
+        addressPrompt: 'اكتب عنوان التوصيل بالتفصيل:',
+        addressRequired: 'اكتب عنوان التوصيل من فضلك.',
+        greeting: 'السلام عليكم، أريد طلب أوردر من كشري العدوي',
+        customer: 'اسم العميل:',
+        orderType: 'طريقة الاستلام:',
+        address: 'العنوان:',
+        details: 'تفاصيل الطلب:',
+        pleaseConfirm: 'برجاء تأكيد الطلب ووقت التجهيز. شكرًا لكم.',
+        delivery: 'توصيل',
+        pickup: 'استلام من المطعم',
+        whatsappAria: 'تواصل مع كشري العدوي عبر واتساب',
+        floatingAria: 'افتح واتساب كشري العدوي'
+      },
+
+      en: {
+        title: '🍲 El Adawy Koshari',
+        description: 'Authentic Egyptian taste — Online Menu',
+        whatsappOrders: 'WhatsApp Orders: 01060072357',
+        nav: ['Koshari', 'Casseroles', 'Hawawshi Pizza', 'El Adawy Crepes', 'Alexandrian Hawawshi', 'Desserts', 'Extras', 'Drinks', '🛒 Cart'],
+        cartTitle: '🛒 Your Cart',
+        emptyCart: 'Your cart is empty. Choose the items you like.',
+        currency: 'EGP',
+        add: 'Add to Cart',
+        total: 'Total',
+        clear: 'Clear Cart',
+        checkout: 'Order via WhatsApp',
+        note: 'These images are temporary and can be replaced in the images folder.',
+        footer: 'El Adawy Koshari — Authentic Egyptian Taste ❤️',
+        floatingWhatsApp: 'WhatsApp 01060072357',
+        remove: 'Remove',
+        decrease: 'Decrease quantity of',
+        increase: 'Increase quantity of',
+        quantity: 'Quantity',
+        loadError: 'Could not load the menu. Make sure menu-data.js exists.',
+        clearConfirm: 'Do you want to clear your cart?',
+        emptyAlert: 'Your cart is empty. Add an item first.',
+        namePrompt: 'Please enter your name:',
+        nameRequired: 'Please enter your name.',
+        typePrompt: 'Choose fulfillment: delivery or restaurant pickup',
+        typeRequired: 'Please enter a fulfillment method.',
+        addressPrompt: 'Enter your full delivery address:',
+        addressRequired: 'Please enter your delivery address.',
+        greeting: 'Hello, I would like to order from El Adawy Koshari 🍲',
+        customer: 'Customer name:',
+        orderType: 'Fulfillment:',
+        address: 'Address:',
+        details: 'Order details:',
+        pleaseConfirm: 'Please confirm the order and preparation time. Thank you.',
+        delivery: 'Delivery',
+        pickup: 'Restaurant pickup',
+        whatsappAria: 'Contact El Adawy Koshari on WhatsApp',
+        floatingAria: 'Open El Adawy Koshari WhatsApp'
+      }
+    };
+
+    function t(key) {
+      return text[currentLanguage][key];
+    }
+
+    function getItemName(item) {
+      return currentLanguage === 'en' && item.nameEn
+        ? item.nameEn
+        : item.name;
+    }
+
+    function getCategoryName(section) {
+      return currentLanguage === 'en' && section.categoryEn
+        ? section.categoryEn
+        : section.category;
+    }
+
+    function applyLanguage(language) {
+      currentLanguage = language === 'en' ? 'en' : 'ar';
+
+      document.documentElement.lang = currentLanguage;
+      document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+
+      document.title = currentLanguage === 'ar'
+        ? 'كشري العدوي | المنيو الإلكتروني'
+        : 'El Adawy Koshari | Online Menu';
+
+      document.getElementById('brand-title').textContent = t('title');
+      document.getElementById('header-description').textContent = t('description');
+      document.getElementById('header-whatsapp-text').textContent = t('whatsappOrders');
+
+      document.querySelector('.header-whatsapp')
+        .setAttribute('aria-label', t('whatsappAria'));
+
+      document.querySelectorAll('.nav a').forEach((link, index) => {
+        if (text[currentLanguage].nav[index]) {
+          link.textContent = text[currentLanguage].nav[index];
+        }
+      });
+
+      document.getElementById('cart-heading').textContent = t('cartTitle');
+      document.getElementById('total-label').textContent = t('total');
+      document.getElementById('currency-label').textContent = t('currency');
+      document.getElementById('clear-cart').textContent = t('clear');
+      document.getElementById('checkout').textContent = t('checkout');
+      document.getElementById('cart-note').textContent = t('note');
+      document.getElementById('footer').textContent = t('footer');
+      document.getElementById('floating-whatsapp-text').textContent = t('floatingWhatsApp');
+
+      document.getElementById('floating-whatsapp')
+        .setAttribute('aria-label', t('floatingAria'));
+
+      document.getElementById('lang-ar')
+        .classList.toggle('active', currentLanguage === 'ar');
+
+      document.getElementById('lang-en')
+        .classList.toggle('active', currentLanguage === 'en');
+
+      document.getElementById('lang-ar')
+        .setAttribute('aria-pressed', String(currentLanguage === 'ar'));
+
+      document.getElementById('lang-en')
+        .setAttribute('aria-pressed', String(currentLanguage === 'en'));
+
+      renderMenu();
+      renderCart();
+    }
+
+    function renderMenu() {
+      menuContainer.replaceChildren();
+
+      if (typeof menuData === 'undefined' || !Array.isArray(menuData)) {
+        menuContainer.textContent = t('loadError');
+        return;
+      }
+
+      menuData.forEach(sectionData => {
+        const section = document.createElement('section');
+        section.className = 'menu-section';
+        section.id = sectionData.id;
+
+        const heading = document.createElement('h2');
+        heading.textContent = getCategoryName(sectionData);
+
+        const grid = document.createElement('div');
+        grid.className = 'menu-grid';
+
+        (sectionData.items || []).forEach(itemData => {
+          const article = document.createElement('article');
+          article.className = 'item';
+
+          const photo = document.createElement('img');
+          photo.className = 'item-photo';
+          photo.src = itemData.image;
+          photo.alt = getItemName(itemData);
+          photo.loading = 'lazy';
+          photo.decoding = 'async';
+
+          const info = document.createElement('div');
+          info.className = 'item-info';
+
+          const name = document.createElement('h3');
+          name.textContent = getItemName(itemData);
+
+          const price = document.createElement('div');
+          price.className = 'price';
+          price.textContent = itemData.price + ' ' + t('currency');
+
+          const button = document.createElement('button');
+          button.className = 'add-btn';
+          button.type = 'button';
+          button.textContent = t('add');
+          button.setAttribute(
+            'aria-label',
+            t('add') + ': ' + getItemName(itemData)
+          );
+
+          button.addEventListener('click', () => {
+            const existing = cart.find(
+              cartItem => cartItem.sourceName === itemData.name
+            );
+
+            if (existing) {
+              existing.quantity++;
+            } else {
+              cart.push({
+                sourceName: itemData.name,
+                data: itemData,
+                price: Number(itemData.price),
+                quantity: 1
+              });
+            }
+
+            renderCart();
+          });
+
+          info.append(name, price, button);
+          article.append(photo, info);
+          grid.append(article);
+        });
+
+        section.append(heading, grid);
+        menuContainer.append(section);
+      });
+    }
+
     function renderCart() {
       if (!cart.length) {
         cartItems.className = 'empty';
-        cartItems.textContent =
-          'السلة فارغة حاليًا. اختار الأصناف اللي تحبها.';
-
+        cartItems.textContent = t('emptyCart');
         cartTotal.textContent = '0';
         return;
       }
@@ -774,6 +977,8 @@
       let total = 0;
 
       cart.forEach((item, index) => {
+        const name = getItemName(item.data);
+
         const row = document.createElement('div');
         row.className = 'cart-row';
 
@@ -781,24 +986,23 @@
         info.className = 'cart-info';
 
         const title = document.createElement('strong');
-        title.textContent = item.name;
+        title.textContent = name;
 
         const sub = document.createElement('small');
         sub.textContent =
-          item.price + ' جنيه × ' + item.quantity +
-          ' = ' + (item.price * item.quantity) + ' جنيه';
+          item.price + ' ' + t('currency') + ' × ' + item.quantity +
+          ' = ' + (item.price * item.quantity) + ' ' + t('currency');
 
         info.append(title, sub);
 
         const actions = document.createElement('div');
         actions.className = 'cart-actions';
 
-        // زر تقليل الكمية
         const minus = document.createElement('button');
         minus.className = 'qty-btn';
         minus.textContent = '−';
         minus.type = 'button';
-        minus.setAttribute('aria-label', 'تقليل كمية ' + item.name);
+        minus.setAttribute('aria-label', t('decrease') + ' ' + name);
 
         minus.onclick = () => {
           item.quantity--;
@@ -810,29 +1014,26 @@
           renderCart();
         };
 
-        // العدد الحالي
         const qty = document.createElement('span');
         qty.textContent = item.quantity;
-        qty.setAttribute('aria-label', 'الكمية');
+        qty.setAttribute('aria-label', t('quantity'));
 
-        // زر زيادة الكمية
         const plus = document.createElement('button');
         plus.className = 'qty-btn';
         plus.textContent = '+';
         plus.type = 'button';
-        plus.setAttribute('aria-label', 'زيادة كمية ' + item.name);
+        plus.setAttribute('aria-label', t('increase') + ' ' + name);
 
         plus.onclick = () => {
           item.quantity++;
           renderCart();
         };
 
-        // زر حذف الصنف
         const remove = document.createElement('button');
         remove.className = 'remove-btn';
-        remove.textContent = 'حذف';
+        remove.textContent = t('remove');
         remove.type = 'button';
-        remove.setAttribute('aria-label', 'حذف ' + item.name);
+        remove.setAttribute('aria-label', t('remove') + ' ' + name);
 
         remove.onclick = () => {
           cart.splice(index, 1);
@@ -849,101 +1050,12 @@
       cartTotal.textContent = total;
     }
 
-    // إنشاء أقسام المنيو وبطاقات الأصناف
-    function renderMenu() {
-      const container = document.getElementById('menu-container');
-      container.replaceChildren();
-
-      if (typeof menuData === 'undefined' || !Array.isArray(menuData)) {
-        container.textContent =
-          'تعذر تحميل بيانات المنيو. تأكد من وجود ملف menu-data.js.';
-        return;
-      }
-
-      menuData.forEach(sectionData => {
-        const section = document.createElement('section');
-        section.className = 'menu-section';
-        section.id = sectionData.id;
-
-        const heading = document.createElement('h2');
-        heading.textContent = sectionData.category;
-
-        const grid = document.createElement('div');
-        grid.className = 'menu-grid';
-
-        sectionData.items.forEach(itemData => {
-          const article = document.createElement('article');
-          article.className = 'item';
-
-          const photo = document.createElement('img');
-          photo.className = 'item-photo';
-          photo.src = itemData.image;
-          photo.alt = itemData.name;
-          photo.loading = 'lazy';
-          photo.decoding = 'async';
-
-          const info = document.createElement('div');
-          info.className = 'item-info';
-
-          const name = document.createElement('h3');
-          name.textContent = itemData.name;
-
-          const price = document.createElement('div');
-          price.className = 'price';
-          price.textContent = itemData.price + ' جنيه';
-
-          const button = document.createElement('button');
-          button.className = 'add-btn';
-          button.type = 'button';
-          button.dataset.name = itemData.name;
-          button.dataset.price = String(itemData.price);
-          button.textContent = 'أضف إلى السلة';
-          button.setAttribute(
-            'aria-label',
-            'أضف ' + itemData.name + ' إلى السلة'
-          );
-
-          info.append(name, price, button);
-          article.append(photo, info);
-          grid.append(article);
-        });
-
-        section.append(heading, grid);
-        container.append(section);
-      });
-
-      // ربط أزرار الإضافة بعد إنشاء جميع البطاقات
-      container.querySelectorAll('.add-btn').forEach(button => {
-        button.addEventListener('click', () => {
-          const name = button.dataset.name;
-          const price = Number(button.dataset.price);
-
-          const existing = cart.find(item => item.name === name);
-
-          if (existing) {
-            existing.quantity++;
-          } else {
-            cart.push({
-              name: name,
-              price: price,
-              quantity: 1
-            });
-          }
-
-          renderCart();
-        });
-      });
-    }
-
-    // إفراغ السلة
     document.getElementById('clear-cart').addEventListener('click', () => {
       if (!cart.length) {
         return;
       }
 
-      const confirmed = confirm('هل تريد إفراغ سلة الطلبات؟');
-
-      if (!confirmed) {
+      if (!confirm(t('clearConfirm'))) {
         return;
       }
 
@@ -951,54 +1063,52 @@
       renderCart();
     });
 
-    // متابعة الطلب عبر واتساب
     document.getElementById('checkout').addEventListener('click', () => {
       if (!cart.length) {
-        alert('السلة فارغة. أضف صنفًا أولًا.');
+        alert(t('emptyAlert'));
         return;
       }
 
-      const customerName = prompt('من فضلك اكتب اسمك:');
+      const customerName = prompt(t('namePrompt'));
 
       if (customerName === null) {
         return;
       }
 
       if (!customerName.trim()) {
-        alert('اكتب اسمك من فضلك.');
+        alert(t('nameRequired'));
         return;
       }
 
-      const orderType = prompt(
-        'اكتب طريقة الاستلام: توصيل أو استلام من المطعم',
-        'توصيل'
-      );
+      const orderType = prompt(t('typePrompt'), t('delivery'));
 
       if (orderType === null) {
         return;
       }
 
-      const normalizedOrderType = orderType.trim();
-
-      if (!normalizedOrderType) {
-        alert('اكتب طريقة الاستلام من فضلك.');
+      if (!orderType.trim()) {
+        alert(t('typeRequired'));
         return;
       }
 
-      const isDelivery = normalizedOrderType.includes('توصيل');
+      const normalizedOrderType = orderType.trim();
+      const lowerOrderType = normalizedOrderType.toLowerCase();
+
+      const isDelivery = currentLanguage === 'ar'
+        ? normalizedOrderType.includes('توصيل')
+        : lowerOrderType.includes('delivery');
+
       let address = '';
 
       if (isDelivery) {
-        const customerAddress = prompt(
-          'اكتب عنوان التوصيل بالتفصيل:'
-        );
+        const customerAddress = prompt(t('addressPrompt'));
 
         if (customerAddress === null) {
           return;
         }
 
         if (!customerAddress.trim()) {
-          alert('اكتب عنوان التوصيل من فضلك.');
+          alert(t('addressRequired'));
           return;
         }
 
@@ -1006,36 +1116,40 @@
       }
 
       const lines = cart.map(item =>
-        '• ' + item.name + ' × ' + item.quantity +
-        ' = ' + (item.price * item.quantity) + ' جنيه'
+        '• ' + getItemName(item.data) + ' × ' + item.quantity +
+        ' = ' + (item.price * item.quantity) + ' ' + t('currency')
       );
 
       const message = [
-        'السلام عليكم، أريد طلب أوردر من كشري العدوي 🍲',
+        t('greeting'),
         '',
-        'اسم العميل: ' + customerName.trim(),
-        'طريقة الاستلام: ' + normalizedOrderType,
-        ...(address ? ['العنوان: ' + address] : []),
+        t('customer') + ' ' + customerName.trim(),
+        t('orderType') + ' ' + normalizedOrderType,
+        ...(address ? [t('address') + ' ' + address] : []),
         '',
-        'تفاصيل الطلب:',
+        t('details'),
         ...lines,
         '',
-        'الإجمالي: ' + cartTotal.textContent + ' جنيه',
+        t('total') + ': ' + cartTotal.textContent + ' ' + t('currency'),
         '',
-        'برجاء تأكيد الطلب ووقت التجهيز. شكرًا لكم.'
+        t('pleaseConfirm')
       ].join('\n');
 
       const whatsappUrl =
-        'https://wa.me/201060072357?text=' +
-        encodeURIComponent(message);
+        'https://wa.me/201060072357?text=' + encodeURIComponent(message);
 
       window.location.href = whatsappUrl;
     });
 
-    // تشغيل المنيو عند فتح الصفحة
-    renderMenu();
-    renderCart();
-  </script>
+    document.getElementById('lang-ar').addEventListener('click', () => {
+      applyLanguage('ar');
+    });
 
+    document.getElementById('lang-en').addEventListener('click', () => {
+      applyLanguage('en');
+    });
+
+    applyLanguage('ar');
+  </script>
 </body>
 </html>
